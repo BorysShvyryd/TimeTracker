@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function apiListTasks() {
 
         addTaskButton.addEventListener("click", function (e) {
             e.preventDefault();
-            if (titleInput.value != "" && descriptionInput.value != "") {
+            if (titleInput.value !== "" && descriptionInput.value !== "") {
                 apiCreateTask(titleInput.value, descriptionInput.value).then(function (resp) {
                     renderTask(resp.data.id, resp.data.title, resp.data.description, resp.data.status);
                     titleInput.value = '';
@@ -165,7 +165,7 @@ function apiUpdateTask(taskId, title, description, status) {
 
 function renderTask(taskId, title, description, status) {
     const section = document.createElement("section");
-    section.classList = "card mt-5 shadow-sm";
+    section.classList = 'card mt-5 shadow-sm';
     document.querySelector('main').appendChild(section);
 
     const headerDiv = document.createElement('div');
@@ -187,7 +187,7 @@ function renderTask(taskId, title, description, status) {
     const headerRightDiv = document.createElement('div');
     headerDiv.appendChild(headerRightDiv);
 
-    if (status == 'open') {
+    if (status === 'open') {
         const finishButton = document.createElement('button');
         finishButton.className = 'btn btn-dark btn-sm js-task-open-only';
         finishButton.innerText = 'Finish';
@@ -312,7 +312,7 @@ function renderOperation(operationsUl, status, operationId, operationDescription
     time.innerText = formatTime(timeSpent);
     descriptionDiv1.appendChild(time);
 
-    if (status == "open") {
+    if (status === "open") {
         const descriptionDivButtons = document.createElement('div');
         li.appendChild(descriptionDivButtons);
 
